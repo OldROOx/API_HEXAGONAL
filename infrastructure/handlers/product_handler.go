@@ -17,7 +17,6 @@ func NewProductHandler(productService *application.ProductService) *ProductHandl
 	return &ProductHandler{productService: productService}
 }
 
-// GetProducts obtiene todos los productos
 func (h *ProductHandler) GetProducts(c *gin.Context) {
 	products, err := h.productService.GetProducts()
 	if err != nil {
@@ -27,7 +26,6 @@ func (h *ProductHandler) GetProducts(c *gin.Context) {
 	c.JSON(http.StatusOK, products)
 }
 
-// CreateProduct crea un nuevo producto
 func (h *ProductHandler) CreateProduct(c *gin.Context) {
 	var product domain.Product
 	if err := c.ShouldBindJSON(&product); err != nil {
@@ -41,7 +39,6 @@ func (h *ProductHandler) CreateProduct(c *gin.Context) {
 	c.JSON(http.StatusCreated, product)
 }
 
-// GetProductByID obtiene un producto por ID
 func (h *ProductHandler) GetProductByID(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -56,7 +53,6 @@ func (h *ProductHandler) GetProductByID(c *gin.Context) {
 	c.JSON(http.StatusOK, product)
 }
 
-// UpdateProduct actualiza un producto existente
 func (h *ProductHandler) UpdateProduct(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -76,7 +72,6 @@ func (h *ProductHandler) UpdateProduct(c *gin.Context) {
 	c.JSON(http.StatusOK, product)
 }
 
-// DeleteProduct elimina un producto
 func (h *ProductHandler) DeleteProduct(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
