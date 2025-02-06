@@ -1,12 +1,11 @@
 package handlers
 
 import (
-	"net/http"
-	"strconv"
-
 	"ApiHEXaGONAL/application"
 	"ApiHEXaGONAL/domain"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"strconv"
 )
 
 type UserHandler struct {
